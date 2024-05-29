@@ -1,0 +1,47 @@
+.container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn{
+    margin-bottom: 25px;
+    width: 40px;
+    margin-left: 5px;
+
+}
+
+.operadores{
+    margin-left: 5px;
+    width: 50px;
+}
+
+#barrabusqueda{
+    border-radius: 10px;
+    height: 55px;
+    border: 1px solid gray;
+    outline: none;
+    padding: 10px;
+}
+
+.color{
+    background-color: #8b8b8b;
+}
+
+.numeros{
+    width: 240px;
+}
+
+.limpiar{
+    width: 90px;
+}
+
+.card{
+    margin-top: 100px;
+    background-image: url(../img/fondo.gif);
+}
+
+.card-body{
+    display: flex;
+    height: 260px;
+}
