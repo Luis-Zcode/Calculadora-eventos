@@ -1,5 +1,6 @@
-let numero = 0
-let guardadito = 0
+let numero = 0;
+let guardadito = 0;
+let contador = 0;
 
 let uno = document.querySelector('.uno')
 let dos = document.querySelector('.dos')
@@ -63,42 +64,45 @@ let barrabusqueda = document.querySelector('#barrabusqueda')
         
         limpiar.addEventListener('click', (e) => {
             barrabusqueda.value = ''
+            guardadito = 0
+            numero = 0
         })
         
         mas.addEventListener('click', () => {
-          guardadito = parseFloat(barrabusqueda.value);
+          guardadito = parseInt(barrabusqueda.value);
           barrabusqueda.value = '';
           operator = '+';
         });
-          
+
         resta.addEventListener('click', () => {
-            guardadito = parseFloat(barrabusqueda.value);
+            guardadito = parseInt(barrabusqueda.value);
             barrabusqueda.value = '';
             operator = '-';
         });
 
         multiplicacion.addEventListener('click', () => {
-          guardadito = parseFloat(barrabusqueda.value);
+          guardadito = parseInt(barrabusqueda.value);
           barrabusqueda.value = '';
           operator = '*';
         });
           
         division.addEventListener('click', () => {
-          guardadito = parseFloat(barrabusqueda.value);
+          guardadito = parseInt(barrabusqueda.value);
           barrabusqueda.value = '';
           operator = '÷';
         });
           
         resultado.addEventListener('click', () => {
-          numero = parseFloat(barrabusqueda.value);
+          numero = parseInt(barrabusqueda.value);
           if (operator === '+') {
             barrabusqueda.value = guardadito + numero;
           } else if (operator === '*') {
             barrabusqueda.value = guardadito * numero;
           } else if (operator === '÷') {
             barrabusqueda.value = guardadito / numero;
-          }else if (operator === '-' )
+          }else if (operator === '-' ) {
             barrabusqueda.value = guardadito - numero;
-          guardadito = parseFloat(barrabusqueda.value);
+          }
+          guardadito = parseInt(barrabusqueda.value);
           operator = "";
         });
