@@ -1,108 +1,93 @@
-let numero = 0;
-let guardadito = 0;
-let contador = 0;
+let numeros = document.querySelectorAll('.numero');
+let texto = document.querySelector('#texto');
+let btnsAccion = document.querySelectorAll('.accion');
+let primerNumero = 0;
+let segundoNumero = 0;
+let acumulador = 0;
+let signo = '';
+let primeraVez = true;
+let resul = 0
 
-let uno = document.querySelector('.uno')
-let dos = document.querySelector('.dos')
-let tres = document.querySelector('.tres')
-let cuatro = document.querySelector('.cuatro')
-let cinco = document.querySelector('.cinco')
-let seis = document.querySelector('.seis')
-let siete = document.querySelector('.siete')
-let ocho = document.querySelector('.ocho')
-let nueve = document.querySelector('.nueve')
-let cero = document.querySelector('.cero')
-let limpiar = document.querySelector('.limpiar')
+numeros.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    texto.value += btn.value
+  })
+})
 
-let mas = document.querySelector('.mas')
-let multiplicacion = document.querySelector('.multiplicacion')
-let division = document.querySelector('.division')
-let resultado = document.querySelector('.resultado')
-let resta = document.querySelector('.resta')
+btnsAccion.forEach((btn) => {
+  btn.addEventListener('click', (e) => {
+    
+    if (e.target.value == '+' || e.target.value == '-'
+      || e.target.value == '/' || e.target.value == '*' || e.target.value == 'clear'
+    ) {
+      primerNumero = parseInt(texto.value)
 
-let barrabusqueda = document.querySelector('#barrabusqueda')
-
-        uno.addEventListener('click', () => {
-            barrabusqueda.value += uno.textContent
-        })
-        
-        dos.addEventListener('click', (e) => {
-            barrabusqueda.value += dos.textContent
-        })
-        
-        tres.addEventListener('click', (e) => {
-            barrabusqueda.value += tres.textContent
-        })
-        
-        cuatro.addEventListener('click', (e) => {
-            barrabusqueda.value += cuatro.textContent
-        })
-        
-        cinco.addEventListener('click', (e) => {
-            barrabusqueda.value += cinco.textContent
-        })
-        
-        seis.addEventListener('click', (e) => {
-            barrabusqueda.value += seis.textContent
-        })
-        
-        siete.addEventListener('click', (e) => {
-            barrabusqueda.value += siete.textContent
-        })
-        
-        ocho.addEventListener('click', (e) => {
-            barrabusqueda.value += ocho.textContent
-        })
-        
-        nueve.addEventListener('click', (e) => {
-            barrabusqueda.value += nueve.textContent
-        })
-        
-        cero.addEventListener('click', (e) => {
-            barrabusqueda.value += cero.textContent
-        })
-        
-        limpiar.addEventListener('click', (e) => {
-            barrabusqueda.value = ''
-            guardadito = 0
-            numero = 0
-        })
-        
-        mas.addEventListener('click', () => {
-          guardadito = parseInt(barrabusqueda.value);
-          barrabusqueda.value = '';
-          operator = '+';
-        });
-
-        resta.addEventListener('click', () => {
-            guardadito = parseInt(barrabusqueda.value);
-            barrabusqueda.value = '';
-            operator = '-';
-        });
-
-        multiplicacion.addEventListener('click', () => {
-          guardadito = parseInt(barrabusqueda.value);
-          barrabusqueda.value = '';
-          operator = '*';
-        });
-          
-        division.addEventListener('click', () => {
-          guardadito = parseInt(barrabusqueda.value);
-          barrabusqueda.value = '';
-          operator = '÷';
-        });
-          
-        resultado.addEventListener('click', () => {
-          numero = parseInt(barrabusqueda.value);
-          if (operator === '+') {
-            barrabusqueda.value = guardadito + numero;
-          } else if (operator === '*') {
-            barrabusqueda.value = guardadito * numero;
-          } else if (operator === '÷') {
-            barrabusqueda.value = guardadito / numero;
-          }else if (operator === '-' ) {
-            barrabusqueda.value = guardadito - numero;
+      switch(e.target.value){
+        case '+':
+          acumulador = acumulador + primerNumero
+          break;
+        case '-':
+          if (primeraVez){
+            acumulador = primerNumero + Math.abs(acumulador)
+            primeraVez = false
+          }else if (acumulador >= 0){
+            acumulador = Math.abs(acumulador) - primerNumero
+          }else{
+            acumulador = acumulador - primerNumero
+          }break;
+        case '*':
+          if (primeraVez){
+            acumulador = acumulador + primerNumero
+            primeraVez = false
+          }else {
+            acumulador =  acumulador * primerNumero
           }
-          guardadito = parseInt(barrabusqueda.value);
-          operator = "";
-        });
+            break;
+        case '/':
+          if (primeraVez){
+            acumulador = primerNumero + acumulador
+            primeraVez = false
+          }else {
+            acumulador =  acumulador / primerNumero
+          }
+            break;
+        case 'clear':
+            primerNumero = 0
+            segundoNumero = 0
+            acumulador = 0
+            signo = ''
+            texto.value = ''  
+      }
+
+      texto.value = ''
+      signo = e.target.value
+   
+    } else if (e.target.value == '=') {
+      
+      if (signo == '+') {
+        segundoNumero = parseInt(texto.value)
+        let resultado = acumulador + segundoNumero
+        texto.value = resultado
+      
+      } else if (signo == '-') {
+        segundoNumero = parseInt(texto.value)
+        let resultado = acumulador - segundoNumero
+        texto.value = resultado
+        primeraVez = true
+      
+      } else if (signo == '*') {
+        segundoNumero = parseInt(texto.value)
+        let resultado = acumulador * segundoNumero
+        texto.value = resultado
+        primeraVez = true
+        console.log(resultado)
+      } else if (signo == '/') {
+        segundoNumero = parseInt(texto.value)
+        let resultado = acumulador / segundoNumero
+        texto.value = resultado
+        primeraVez = true
+      }
+      acumulador = 0
+    }
+  })
+})

@@ -16,7 +16,7 @@
     width: 50px;
 }
 
-#barrabusqueda{
+#texto{
     border-radius: 10px;
     height: 55px;
     border: 1px solid gray;
@@ -32,7 +32,7 @@
     width: 240px;
 }
 
-.limpiar{
+#limpiar{
     width: 90px;
 }
 
