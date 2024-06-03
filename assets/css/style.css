@@ -1,7 +1,13 @@
-.container{
+body{
+    height: 100vh;
+}
+
+.container-fluid{
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    background-color: #acfafa60;
 }
 
 .btn{
@@ -9,11 +15,6 @@
     width: 40px;
     margin-left: 5px;
 
-}
-
-.operadores{
-    margin-left: 5px;
-    width: 50px;
 }
 
 #texto{
@@ -28,20 +29,24 @@
     background-color: #8b8b8b;
 }
 
-.numeros{
-    width: 240px;
-}
-
 #limpiar{
-    width: 90px;
+    width: 200px;
+    margin-left: 20px;
 }
 
 .card{
     margin-top: 100px;
     background-image: url(../img/fondo.gif);
+    height: 50px;
 }
 
 .card-body{
     display: flex;
     height: 260px;
+}
+
+.card-text{
+    display: flex;
+    flex-direction: column;
+    height: 30px;
 }

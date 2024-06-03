@@ -8,31 +8,37 @@
     <link rel="stylesheet" href="./assets/css/bootstrap.css">
 </head>
 <body>
-  <div class="container">
-    <div class="card d-flex mb-3" style="width: 18rem;">
-      <div class="card-header"><input type="text" name="" id="texto" placeholder="Ingrese una operacion"></div>
-      <div class="card-body">
-        <div class="card-text numeros">
-            <button type="button" value="1" id="uno" class="btn bg-info numero">1</button>
-            <button type="button" value="2" id="dos" class="btn bg-info numero">2</button>
-            <button type="button" value="3" id="tres" class="btn bg-info numero">3</button>
-            <button type="button" value="4" id="cuatro" class="btn bg-info numero">4</button>
-            <button type="button" value="5" id="cinco" class="btn bg-info numero">5</button>
-            <button type="button" value="6" id="seis" class="btn bg-info numero">6</button>
-            <button type="button" value="7" id="siete" class="btn bg-info numero">7</button>
-            <button type="button" value="8" id="ocho" class="btn bg-info numero">8</button>
-            <button type="button" value="9" id="nueve" class="btn bg-info numero">9</button>
-            <button type="button" value="0" id="cero" class="btn bg-info numero">0</button>
-            <button type="button" value="clear" id="limpiar" class="btn bg-danger accion">Limpiar</button>
-      </div>
-      <div class="card-text operadores">
-        <button type="button" value="/" id="division" class="btn bg-info accion">/</button>
-        <button type="button" value="+" id="mas" class="btn bg-info accion">+</button>
-      </div>
-      <div class="operadores">
-        <button type="button" value="-" id="dos" class="btn bg-info accion">-</button>
-        <button type="button" value="*" id="multiplicacion" class="btn bg-info accion">*</button>
-        <button type="button" value="=" id="igual" class="btn bg-success accion">=</button>
+  <div class="container-fluid">
+    <div>
+      <div class="card d-flex mb-3" style="width: 18rem;">
+        <div class="card-header"><input type="text" name="" id="texto" placeholder="Ingrese una operacion"></div>
+        <div class="card-body">
+          <div class="card-text">
+            <div>
+              <button type="button" value="1" id="uno" class="btn bg-secondary numero">1</button>
+              <button type="button" value="2" id="dos" class="btn bg-secondary numero">2</button>
+              <button type="button" value="3" id="tres" class="btn bg-secondary numero">3</button>
+              <button type="button" value="4" id="cuatro" class="btn bg-secondary numero">4</button>
+              <button type="button" value="/" id="division" class="btn bg-warning accion">/</button>
+            </div>
+            <div>
+              <button type="button" value="5" id="cinco" class="btn bg-secondary numero">5</button>
+              <button type="button" value="6" id="seis" class="btn bg-secondary numero">6</button>
+              <button type="button" value="7" id="siete" class="btn bg-secondary numero">7</button>
+              <button type="button" value="8" id="ocho" class="btn bg-secondary numero">8</button>
+              <button type="button" value="+" id="mas" class="btn bg-warning accion">+</button>
+            </div>
+            <div>
+              <button type="button" value="9" id="nueve" class="btn bg-secondary numero">9</button>
+              <button type="button" value="0" id="cero" class="btn bg-secondary numero">0</button>
+              <button type="button" value="*" id="multiplicacion" class="btn bg-warning accion">*</button>
+              <button type="button" value="-" id="dos" class="btn bg-warning accion">-</button>
+              <button type="button" value="=" id="igual" class="btn bg-success accion">=</button>
+            </div>
+            <div>
+              <button type="button" value="clear" id="limpiar" class="btn bg-danger accion">C</button>
+            </div>
+        </div>
       </div>
     </div>
   </div>

@@ -1,12 +1,12 @@
 let numeros = document.querySelectorAll('.numero');
 let texto = document.querySelector('#texto');
 let btnsAccion = document.querySelectorAll('.accion');
+let limpiar = document.querySelector('#limpiar')
 let primerNumero = 0;
 let segundoNumero = 0;
 let acumulador = 0;
 let signo = '';
 let primeraVez = true;
-let resul = 0
 
 numeros.forEach((btn) => {
   btn.addEventListener('click', () => {
@@ -14,73 +14,133 @@ numeros.forEach((btn) => {
   })
 })
 
+const suma = () => {
+  acumulador = acumulador + primerNumero
+}
+
+const resta = () => {
+  if (primeraVez){
+    acumulador = primerNumero + Math.abs(acumulador)
+    primeraVez = false
+  }else if (acumulador >= 0){
+    acumulador = Math.abs(acumulador) - primerNumero
+  }else{
+      acumulador = acumulador - primerNumero
+}}
+
+const multiplicacion = () => {
+  if (primeraVez){
+    acumulador = acumulador + primerNumero
+    primeraVez = false
+  }else {
+    acumulador =  primerNumero * acumulador 
+  }
+}
+
+const division = () => {
+  if (primeraVez){
+    acumulador = primerNumero + acumulador
+    primeraVez = false
+  }else {
+    acumulador =  acumulador / primerNumero         
+  }
+}
+
+const igual = () => {
+ 
+  if (signo == '+') {
+    segundoNumero = parseInt(texto.value)
+    acumulador = acumulador + segundoNumero
+    texto.value = acumulador       
+  
+  } else if (signo == '-') {
+    segundoNumero = parseInt(texto.value)
+    acumulador = acumulador - segundoNumero
+    texto.value = acumulador
+    primeraVez = true       
+  
+  } else if (signo == '*') {
+    segundoNumero = parseInt(texto.value)
+    acumulador = acumulador * segundoNumero   
+    texto.value = acumulador
+    primeraVez = true
+  
+  } else if (signo == '/') {
+    segundoNumero = parseInt(texto.value)
+    acumulador = acumulador / segundoNumero
+    texto.value = acumulador
+    primeraVez = true
+  }
+}          
+
+limpiar.addEventListener('click', () => {
+  primerNumero = 0
+  segundoNumero = 0
+  acumulador = 0
+  signo = ''
+  texto.value = '' 
+})
+
 btnsAccion.forEach((btn) => {
   btn.addEventListener('click', (e) => {
     
     if (e.target.value == '+' || e.target.value == '-'
-      || e.target.value == '/' || e.target.value == '*' || e.target.value == 'clear'
+      || e.target.value == '/' || e.target.value == '*'
     ) {
       primerNumero = parseInt(texto.value)
 
-      switch(e.target.value){
-        case '+':
-          acumulador = acumulador + primerNumero
-          break;
-        case '-':
-          if (primeraVez){
-            acumulador = primerNumero + Math.abs(acumulador)
-            primeraVez = false
-          }else if (acumulador >= 0){
-            acumulador = Math.abs(acumulador) - primerNumero
-          }else{
-            acumulador = acumulador - primerNumero
-          }break;
-        case '*':
-          if (primeraVez){
-            acumulador = acumulador + primerNumero
-            primeraVez = false
-          }else {
-            acumulador =  acumulador * primerNumero
-          }
-            break;
-        case '/':
-          if (primeraVez){
-            acumulador = primerNumero + acumulador
-            primeraVez = false
-          }else {
-            acumulador =  acumulador / primerNumero
-          }
-            break;
-        case 'clear':
-            primerNumero = 0
-            segundoNumero = 0
-            acumulador = 0
-            signo = ''
-            texto.value = ''  
+    switch(e.target.value){
+      case '+':
+        if(signo != ''){
+          igual();
+        }else {
+          suma();
+        }
+        break;
+      case '-':
+        if(signo != ''){
+          igual();
+        }else {
+          resta();
+        }
+        break;
+      case '*':
+        if(signo != ''){
+          igual();
+        }else {
+          multiplicacion();
+        }
+        break;
+      case '/':
+        if(signo != ''){
+          igual();
+        }else {
+          division();
+        }
       }
 
       texto.value = ''
       signo = e.target.value
    
-    } else if (e.target.value == '=') {
+    }else if (e.target.value == '=') {
       
       if (signo == '+') {
         segundoNumero = parseInt(texto.value)
         let resultado = acumulador + segundoNumero
-        texto.value = resultado
+        texto.value = resultado       
       
       } else if (signo == '-') {
         segundoNumero = parseInt(texto.value)
         let resultado = acumulador - segundoNumero
         texto.value = resultado
-        primeraVez = true
+        primeraVez = true       
       
       } else if (signo == '*') {
         segundoNumero = parseInt(texto.value)
-        let resultado = acumulador * segundoNumero
+        let resultado = segundoNumero * acumulador  
         texto.value = resultado
         primeraVez = true
-        console.log(resultado)
+      
       } else if (signo == '/') {
         segundoNumero = parseInt(texto.value)
         let resultado = acumulador / segundoNumero
