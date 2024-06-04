@@ -29,11 +29,6 @@ body{
     background-color: #8b8b8b;
 }
 
-#limpiar{
-    width: 200px;
-    margin-left: 20px;
-}
-
 .card{
     margin-top: 100px;
     background-image: url(../img/fondo.gif);
@@ -43,6 +38,7 @@ body{
 .card-body{
     display: flex;
     height: 260px;
+    justify-content: center;
 }
 
 .card-text{
